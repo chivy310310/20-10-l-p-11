@@ -3,8 +3,8 @@
  * Giữ nguyên duy nhất 1 câu chúc theo yêu cầu, tập trung trọn vẹn vào trải nghiệm mở quà & âm nhạc.
  */
 
-const SINGLE_WISH = `Gửi {name} 💗
-Chúc cậu ngày 20/10 luôn nhẹ lòng, bình thản và hạnh phúc từ những điều giản đơn nhất. Mong cậu luôn giữ vững niềm tin, luôn mạnh mẽ vượt qua mọi cơn gió ngược để vươn tới bầu trời của riêng mình! 🌤️✨`;
+const SINGLE_WISH = `Gửi [Tên] 💗
+Chúc [Tên] ngày 20/10 luôn nhẹ lòng, bình thản và hạnh phúc từ những điều giản đơn nhất. Mong [Tên] luôn giữ vững niềm tin, luôn mạnh mẽ vượt qua mọi cơn gió ngược để vươn tới bầu trời của riêng mình! 🌤️✨`;
 
 let currentName = '';
 
@@ -97,7 +97,7 @@ function triggerGiftOpening() {
 // 2. HIỂN THỊ CÂU CHÚC DUY NHẤT ĐƯỢC CHỌN
 // ==========================================================================
 function displayWish(name) {
-  const personalizedWish = SINGLE_WISH.replace(/\{name\}/g, name);
+  const personalizedWish = SINGLE_WISH.replace(/\[Tên\]/g, name).replace(/\{name\}/g, name);
 
   const titleEl = document.getElementById('card-title-name');
   const wishEl = document.getElementById('wish-paragraph');

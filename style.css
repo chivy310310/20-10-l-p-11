@@ -1,0 +1,664 @@
+/* ==========================================================================
+   A LITTLE GIFT FOR YOU 💌 — WEBSITE CHÚC MỪNG 20/10
+   PHONG CÁCH: PASTEL PINK, CUTE, ROMANTIC, AESTHETIC & MODERN
+   ========================================================================== */
+
+:root {
+  /* Bảng màu pastel pink, cream white, deep pink & soft gold */
+  --bg-milk: #FFF5F7;
+  --pink-pastel: #FCE4EC;
+  --pink-blush: #F8BBD0;
+  --pink-peach: #FADADD;
+  --pink-accent: #EC407A;
+  --pink-deep: #D81B60;
+  --pink-dark: #C2185B;
+  --pink-title: #880E4F;
+  --gold-soft: #FFE082;
+  --gold-border: rgba(255, 193, 7, 0.45);
+  
+  --text-main: #4A1525;
+  --text-sub: #7A3348;
+  --text-muted: #A35B70;
+  --white: #FFFFFF;
+  --cream: #FFFDF9;
+
+  --card-shadow: 0 20px 60px rgba(216, 27, 96, 0.18), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --card-border: rgba(248, 187, 208, 0.7);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+  
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+  --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background: linear-gradient(135deg, 
+    var(--bg-milk) 0%, 
+    var(--pink-pastel) 25%, 
+    var(--pink-peach) 50%, 
+    var(--pink-blush) 78%, 
+    var(--bg-milk) 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Canvas hiệu ứng cánh hoa và đốm sáng rơi */
+#petals-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Container chính */
+.app-container {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Nút điều khiển âm thanh nổi */
+.top-nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid var(--card-border);
+  color: var(--pink-deep);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(216, 27, 96, 0.12);
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.icon-btn:hover {
+  background: var(--pink-deep);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(216, 27, 96, 0.25);
+}
+
+.icon-btn.active {
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink-accent));
+  color: var(--white);
+  border-color: var(--pink-deep);
+}
+
+/* ==========================================================================
+   MÀN HÌNH 1: TRANG CHỦ / NHẬP TÊN (HOME VIEW)
+   ========================================================================== */
+.view-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.view-section.hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.home-card {
+  width: 100%;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 48px 36px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 20px;
+  background: linear-gradient(135deg, rgba(252, 228, 236, 0.9), rgba(248, 187, 208, 0.6));
+  color: var(--pink-title);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(244, 143, 177, 0.4);
+  margin-bottom: 16px;
+}
+
+.main-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--pink-title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--pink-deep);
+  margin-bottom: 24px;
+}
+
+/* Hộp quà 3D minh họa dễ thương */
+.gift-illustration {
+  margin: 10px auto 26px;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-box-anim {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #FF69B4, #D81B60);
+  border-radius: 18px;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(216, 27, 96, 0.35);
+  animation: gentleBounce 2.4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--white);
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.gift-ribbon-v {
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background: linear-gradient(180deg, #FFE082, #FFD54F);
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+}
+
+.gift-ribbon-h {
+  position: absolute;
+  height: 16px;
+  width: 100%;
+  background: linear-gradient(90deg, #FFE082, #FFD54F);
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+}
+
+.gift-bow {
+  position: absolute;
+  top: -16px;
+  font-size: 2.2rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+  animation: bowPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes bowPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.lead-prompt {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
+/* Form nhập tên */
+.input-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.name-input {
+  width: 100%;
+  padding: 16px 24px 16px 52px;
+  font-size: 1.15rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-full);
+  outline: none;
+  box-shadow: 0 4px 16px rgba(216, 27, 96, 0.08);
+  transition: var(--transition);
+}
+
+.name-input:focus {
+  border-color: var(--pink-deep);
+  box-shadow: 0 0 0 4px rgba(236, 64, 122, 0.25), 0 6px 20px rgba(216, 27, 96, 0.15);
+  background: var(--white);
+}
+
+.input-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: var(--pink-accent);
+  pointer-events: none;
+}
+
+.error-hint {
+  color: #D32F2F;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 22px;
+  transition: var(--transition);
+}
+
+.btn-open {
+  width: 100%;
+  padding: 16px 32px;
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink-accent));
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(216, 27, 96, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.btn-open:hover {
+  background: linear-gradient(135deg, var(--pink-dark), var(--pink-deep));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(216, 27, 96, 0.42);
+}
+
+.btn-open:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   HIỆU ỨNG CHUYỂN CẢNH MỞ BÌ THƯ (OPENING ANIMATION)
+   ========================================================================== */
+.opening-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 240, 245, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.opening-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 220px;
+  height: 150px;
+  background: #F8BBD0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(216, 27, 96, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-top: 80px solid #F06292;
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-heart {
+  font-size: 2.8rem;
+  z-index: 3;
+  animation: heartThrob 1s ease-in-out infinite;
+}
+
+@keyframes heartThrob {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.opening-text {
+  margin-top: 24px;
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: var(--pink-title);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   MÀN HÌNH 2: TẤM THIỆP CHÚC MỪNG 20/10 (CARD VIEW)
+   ========================================================================== */
+.card-wrapper {
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+}
+
+.greeting-card {
+  background: var(--cream);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 48px 42px 40px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  border-top: 8px solid var(--pink-deep);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF8FA 70%, #FCE4EC 100%);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.greeting-card.flip-anim {
+  animation: cardFlip 0.6s ease;
+}
+
+@keyframes cardFlip {
+  0% { transform: scale(1) rotateY(0deg); opacity: 1; }
+  50% { transform: scale(0.95) rotateY(90deg); opacity: 0.5; }
+  100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+/* Dấu sáp niêm phong trang trí */
+.wax-seal {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-deep), #FF4081);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: -68px auto 20px;
+  box-shadow: 0 6px 18px rgba(216, 27, 96, 0.35);
+  border: 3px solid var(--white);
+}
+
+.card-title-name {
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  font-weight: 900;
+  color: var(--pink-title);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.card-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--pink-accent), transparent);
+  margin: 0 auto 24px;
+}
+
+/* Khung lời chúc */
+.wish-content-box {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px dashed var(--pink-blush);
+  border-radius: var(--radius-md);
+  padding: 30px 28px;
+  margin-bottom: 0;
+  box-shadow: inset 0 2px 8px rgba(216, 27, 96, 0.04);
+}
+
+.wish-paragraph {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--text-main);
+  text-align: justify;
+  white-space: pre-line;
+}
+
+/* Hàng nút tương tác thực tế */
+.card-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.btn-action {
+  padding: 12px 18px;
+  font-size: 0.96rem;
+  font-weight: 750;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px solid var(--pink-blush);
+  background: var(--white);
+  color: var(--pink-deep);
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.08);
+  transition: var(--transition);
+}
+
+.btn-action:hover {
+  background: var(--pink-pastel);
+  color: var(--pink-title);
+  border-color: var(--pink-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(216, 27, 96, 0.16);
+}
+
+.btn-action:active {
+  transform: translateY(0);
+}
+
+.btn-action.highlight {
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink-accent));
+  color: var(--white);
+  border: none;
+}
+
+.btn-action.highlight:hover {
+  background: linear-gradient(135deg, var(--pink-dark), var(--pink-deep));
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(216, 27, 96, 0.28);
+}
+
+/* Nút bắn tim góc thiệp */
+.heart-burst-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--card-border);
+  color: var(--pink-deep);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.1);
+  transition: var(--transition);
+}
+
+.heart-burst-btn:hover {
+  transform: scale(1.18);
+  background: var(--pink-pastel);
+}
+
+/* ==========================================================================
+   THÔNG BÁO TOAST & PHẢN HỒI
+   ========================================================================== */
+.toast-msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background: rgba(136, 14, 79, 0.95);
+  color: var(--white);
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  font-size: 0.96rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Hiệu ứng trái tim bay khi bấm tim */
+.floating-heart-el {
+  position: fixed;
+  pointer-events: none;
+  z-index: 900;
+  font-size: 1.6rem;
+  animation: floatHeartUp 1.8s ease-out forwards;
+}
+
+@keyframes floatHeartUp {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-160px) scale(1.4) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE, TABLET, DESKTOP)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 24px 16px;
+  }
+
+  .home-card, .greeting-card {
+    padding: 36px 20px 28px;
+    border-radius: var(--radius-md);
+  }
+
+  .main-title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .card-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .wax-seal {
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+    margin: -54px auto 16px;
+  }
+
+  .top-nav {
+    top: 14px;
+    right: 14px;
+  }
+
+  .icon-btn {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Hỗ trợ prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #petals-canvas {
+    display: none;
+  }
+}

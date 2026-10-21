@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Gift for You 💌 — Chúc Mừng 20/10</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Hiệu ứng cánh hoa rơi nhẹ nhàng toàn trang -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- File âm thanh nền được tải từ máy -->
+  <audio id="bgm-audio" src="./bgm.mp3" loop preload="auto"></audio>
+
+  <!-- Nút bật/tắt nhạc nền dịu êm góc phải (Mặc định tắt) -->
+  <header class="top-nav">
+    <button id="music-toggle-btn" class="icon-btn" type="button" aria-label="Bật hoặc tắt nhạc nền">
+      <span>🔇</span> Nhạc nền
+    </button>
+  </header>
+
+  <main class="app-container">
+    <!-- ====================================================================
+         MÀN HÌNH 1: TRANG CHỦ & Ô NHẬP TÊN (HOME VIEW)
+         ==================================================================== -->
+    <section id="home-view" class="view-section">
+      <div class="home-card">
+        <span class="badge-tag">A Little Gift for You 💌</span>
+        
+        <h1 class="main-title">Happy Vietnamese Women's Day! 🌷</h1>
+        <p class="subtitle">Một món quà nhỏ, dành riêng cho cậu.</p>
+
+        <!-- Hộp quà hoạt họa 3D lấp lánh -->
+        <div class="gift-illustration">
+          <div class="gift-box-anim">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+            <span class="gift-bow">🎀</span>
+          </div>
+        </div>
+
+        <p class="lead-prompt">Nhập tên của cậu để mở món quà bí mật nhé! 💗</p>
+
+        <!-- Form nhập tên người nhận -->
+        <div class="input-form">
+          <div class="input-wrapper">
+            <span class="input-icon">✨</span>
+            <input 
+              type="text" 
+              id="name-input" 
+              class="name-input" 
+              placeholder="Tên của cậu là..." 
+              maxlength="40"
+              autocomplete="off"
+              aria-label="Nhập tên người nhận"
+            />
+          </div>
+          <p id="error-msg" class="error-hint" aria-live="polite"></p>
+
+          <button id="open-gift-btn" class="btn-open" type="button">
+            <span>Mở món quà 💌</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MÀN HÌNH 2: TẤM THIỆP CHÚC MỪNG 20/10 (CARD VIEW)
+         ==================================================================== -->
+    <section id="card-view" class="view-section hidden">
+      <div class="card-wrapper">
+        <article id="greeting-card" class="greeting-card">
+          <!-- Nút bắn tim góc thiệp -->
+          <button id="heart-burst-btn" class="heart-burst-btn" type="button" aria-label="Bắn tim chúc mừng" title="Bấm để thả tim!">
+            💖
+          </button>
+
+          <!-- Dấu niêm phong sáp trái tim -->
+          <div class="wax-seal" aria-hidden="true">
+            ♡
+          </div>
+
+          <h2 id="card-title-name" class="card-title-name">Happy 20/10, Bạn 💖</h2>
+          <div class="card-divider"></div>
+
+          <div class="wish-content-box">
+            <p id="wish-paragraph" class="wish-paragraph">
+              Nội dung lời chúc ngọt ngào đang được tải...
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       HIỆU ỨNG CHUYỂN CẢNH MỞ BÌ THƯ BÍ MẬT (OPENING OVERLAY)
+       ==================================================================== -->
+  <aside id="opening-overlay" class="opening-overlay" aria-hidden="true">
+    <div id="envelope-box" class="envelope-wrapper">
+      <div class="envelope-flap"></div>
+      <span class="envelope-heart">💌</span>
+    </div>
+    <p class="opening-text">Đang mở món quà dành riêng cho cậu... ✨</p>
+  </aside>
+
+  <!-- Logic JavaScript chính (Hoạt động hoàn hảo cả khi mở trực tiếp file:// lẫn khi chạy máy chủ web) -->
+  <script src="./script.js"></script>
+</body>
+</html>
